@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Gestion_video_skstreamStoreContainer" CdmEntityContainer="Gestion_video_skstreamContainer">
+    <EntitySetMapping Name="VideosSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Gestion_video_skstream.Videos)">
+        <MappingFragment StoreEntitySet="VideosSet">
+          <ScalarProperty Name="Description" ColumnName="Description_film" />
+          <ScalarProperty Name="Filefullname" ColumnName="Filefullname" />
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Acteure" ColumnName="Acteure" />
+          <ScalarProperty Name="Genre" ColumnName="Genre" />
+          <ScalarProperty Name="Pays" ColumnName="Pays" />
+          <ScalarProperty Name="Duree" ColumnName="Duree" />
+          <ScalarProperty Name="Creer_par" ColumnName="Creer_par" />
+          <ScalarProperty Name="Categorie" ColumnName="Categorie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Gestion_video_skstream.Video_serie)">
+        <MappingFragment StoreEntitySet="VideosSet_Video_serie">
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="NBsaison" ColumnName="NBsaison" />
+          <ScalarProperty Name="NBepisode" ColumnName="NBepisode" />
+          <ScalarProperty Name="Annee_lancement" ColumnName="Annee_lancement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Gestion_video_skstream.Animer)">
+        <MappingFragment StoreEntitySet="VideosSet_Animer">
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Gestion_video_skstream.Series)">
+        <MappingFragment StoreEntitySet="VideosSet_Series">
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Gestion_video_skstream.Films)">
+        <MappingFragment StoreEntitySet="VideosSet_Films">
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Anne_production" ColumnName="Anne_production" />
+          <ScalarProperty Name="Date_sortie" ColumnName="Date_sortie" />
+          <ScalarProperty Name="Lien" ColumnName="Lien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sommaire_seriesSet">
+      <EntityTypeMapping TypeName="IsTypeOf(Gestion_video_skstream.Sommaire_series)">
+        <MappingFragment StoreEntitySet="Sommaire_seriesSet">
+          <ScalarProperty Name="Titre" ColumnName="Titre" />
+          <ScalarProperty Name="Saison" ColumnName="Saison" />
+          <ScalarProperty Name="Episode" ColumnName="Episode" />
+          <ScalarProperty Name="Lien" ColumnName="Lien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Gestion_video_skstream.Detail_animer)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="Sommaire_seriesSet_Detail_animer">
+          <ScalarProperty Name="Titre_animer" ColumnName="Titre" />
+          <ScalarProperty Name="Titre" ColumnName="Titre_sommaire" />
+          <ScalarProperty Name="Episode" ColumnName="Episode" />
+          <ScalarProperty Name="Saison" ColumnName="Saison" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(Gestion_video_skstream.Detail_series)" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <MappingFragment StoreEntitySet="Sommaire_seriesSet_Detail_series">
+          <ScalarProperty Name="Episode" ColumnName="Episode" />
+          <ScalarProperty Name="Saison" ColumnName="Saison" />
+          <ScalarProperty Name="Titre" ColumnName="Titre_sommaire" />
+          <ScalarProperty Name="Titre_serie" ColumnName="Titre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="insertion_animer_sommaireseries_detailanimer" FunctionName="Gestion_video_skstream.Store.insertion_animer_sommaireseries_detailanimer" />
+    <FunctionImportMapping FunctionImportName="insertion_series_sommaireseries_detailseries" FunctionName="Gestion_video_skstream.Store.insertion_series_sommaireseries_detailseries" />
+    <FunctionImportMapping FunctionImportName="insertion_videos_films" FunctionName="Gestion_video_skstream.Store.insertion_videos_films" />
+    <FunctionImportMapping FunctionImportName="insertion_videos_videosseries_animer" FunctionName="Gestion_video_skstream.Store.insertion_videos_videosseries_animer" />
+    <FunctionImportMapping FunctionImportName="insertion_videos_videosseries_series" FunctionName="Gestion_video_skstream.Store.insertion_videos_videosseries_series" />
+  </EntityContainerMapping>
+</Mapping>

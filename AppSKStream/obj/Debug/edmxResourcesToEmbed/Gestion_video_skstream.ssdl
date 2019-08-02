@@ -1,0 +1,296 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Gestion_video_skstream.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Sommaire_seriesSet">
+    <Key>
+      <PropertyRef Name="Titre" />
+      <PropertyRef Name="Saison" />
+      <PropertyRef Name="Episode" />
+    </Key>
+    <Property Name="Titre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Saison" Type="bigint" Nullable="false" />
+    <Property Name="Episode" Type="bigint" Nullable="false" />
+    <Property Name="Lien" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sommaire_seriesSet_Detail_animer">
+    <Key>
+      <PropertyRef Name="Titre_sommaire" />
+      <PropertyRef Name="Saison" />
+      <PropertyRef Name="Episode" />
+    </Key>
+    <Property Name="Titre_sommaire" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Saison" Type="bigint" Nullable="false" />
+    <Property Name="Episode" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Sommaire_seriesSet_Detail_series">
+    <Key>
+      <PropertyRef Name="Titre_sommaire" />
+      <PropertyRef Name="Saison" />
+      <PropertyRef Name="Episode" />
+    </Key>
+    <Property Name="Titre_sommaire" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Saison" Type="bigint" Nullable="false" />
+    <Property Name="Episode" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideosSet">
+    <Key>
+      <PropertyRef Name="Titre" />
+    </Key>
+    <Property Name="Titre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Acteure" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Genre" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Pays" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Duree" Type="time" Precision="7" Nullable="false" />
+    <Property Name="Creer_par" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Categorie" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Description_film" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Filefullname" Type="nvarchar" MaxLength="500" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideosSet_Animer">
+    <Key>
+      <PropertyRef Name="Titre" />
+    </Key>
+    <Property Name="Titre" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideosSet_Films">
+    <Key>
+      <PropertyRef Name="Titre" />
+    </Key>
+    <Property Name="Anne_production" Type="bigint" Nullable="false" />
+    <Property Name="Date_sortie" Type="datetime" Nullable="false" />
+    <Property Name="Lien" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideosSet_Series">
+    <Key>
+      <PropertyRef Name="Titre" />
+    </Key>
+    <Property Name="Titre" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VideosSet_Video_serie">
+    <Key>
+      <PropertyRef Name="Titre" />
+    </Key>
+    <Property Name="NBsaison" Type="bigint" Nullable="false" />
+    <Property Name="NBepisode" Type="bigint" Nullable="false" />
+    <Property Name="Annee_lancement" Type="bigint" Nullable="false" />
+    <Property Name="Titre" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Animer_inherits_Video_serie">
+    <End Role="VideosSet_Video_serie" Type="Self.VideosSet_Video_serie" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VideosSet_Animer" Type="Self.VideosSet_Animer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="VideosSet_Video_serie">
+        <PropertyRef Name="Titre" />
+      </Principal>
+      <Dependent Role="VideosSet_Animer">
+        <PropertyRef Name="Titre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AnimerDetail_animer">
+    <End Role="VideosSet_Animer" Type="Self.VideosSet_Animer" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sommaire_seriesSet_Detail_animer" Type="Self.Sommaire_seriesSet_Detail_animer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VideosSet_Animer">
+        <PropertyRef Name="Titre" />
+      </Principal>
+      <Dependent Role="Sommaire_seriesSet_Detail_animer">
+        <PropertyRef Name="Titre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detail_animer_inherits_Sommaire_series">
+    <End Role="Sommaire_seriesSet" Type="Self.Sommaire_seriesSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sommaire_seriesSet_Detail_animer" Type="Self.Sommaire_seriesSet_Detail_animer" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sommaire_seriesSet">
+        <PropertyRef Name="Titre" />
+        <PropertyRef Name="Saison" />
+        <PropertyRef Name="Episode" />
+      </Principal>
+      <Dependent Role="Sommaire_seriesSet_Detail_animer">
+        <PropertyRef Name="Titre_sommaire" />
+        <PropertyRef Name="Saison" />
+        <PropertyRef Name="Episode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Detail_series_inherits_Sommaire_series">
+    <End Role="Sommaire_seriesSet" Type="Self.Sommaire_seriesSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sommaire_seriesSet_Detail_series" Type="Self.Sommaire_seriesSet_Detail_series" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Sommaire_seriesSet">
+        <PropertyRef Name="Titre" />
+        <PropertyRef Name="Saison" />
+        <PropertyRef Name="Episode" />
+      </Principal>
+      <Dependent Role="Sommaire_seriesSet_Detail_series">
+        <PropertyRef Name="Titre_sommaire" />
+        <PropertyRef Name="Saison" />
+        <PropertyRef Name="Episode" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Films_inherits_Videos">
+    <End Role="VideosSet" Type="Self.VideosSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VideosSet_Films" Type="Self.VideosSet_Films" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="VideosSet">
+        <PropertyRef Name="Titre" />
+      </Principal>
+      <Dependent Role="VideosSet_Films">
+        <PropertyRef Name="Titre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Series_Detailseries">
+    <End Role="VideosSet_Series" Type="Self.VideosSet_Series" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Sommaire_seriesSet_Detail_series" Type="Self.Sommaire_seriesSet_Detail_series" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VideosSet_Series">
+        <PropertyRef Name="Titre" />
+      </Principal>
+      <Dependent Role="Sommaire_seriesSet_Detail_series">
+        <PropertyRef Name="Titre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Series_inherits_Video_serie">
+    <End Role="VideosSet_Video_serie" Type="Self.VideosSet_Video_serie" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VideosSet_Series" Type="Self.VideosSet_Series" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="VideosSet_Video_serie">
+        <PropertyRef Name="Titre" />
+      </Principal>
+      <Dependent Role="VideosSet_Series">
+        <PropertyRef Name="Titre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Video_serie_inherits_Videos">
+    <End Role="VideosSet" Type="Self.VideosSet" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="VideosSet_Video_serie" Type="Self.VideosSet_Video_serie" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="VideosSet">
+        <PropertyRef Name="Titre" />
+      </Principal>
+      <Dependent Role="VideosSet_Video_serie">
+        <PropertyRef Name="Titre" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="insertion_animer_sommaireseries_detailanimer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="titre" Type="varchar" Mode="In" />
+    <Parameter Name="saison" Type="int" Mode="In" />
+    <Parameter Name="episode" Type="int" Mode="In" />
+    <Parameter Name="lien" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insertion_series_sommaireseries_detailseries" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="titre" Type="varchar" Mode="In" />
+    <Parameter Name="saison" Type="int" Mode="In" />
+    <Parameter Name="episode" Type="int" Mode="In" />
+    <Parameter Name="lien" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insertion_videos_films" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="titre" Type="varchar" Mode="In" />
+    <Parameter Name="acteure" Type="varchar" Mode="In" />
+    <Parameter Name="genre" Type="varchar" Mode="In" />
+    <Parameter Name="pays" Type="varchar" Mode="In" />
+    <Parameter Name="duree" Type="time" Mode="In" />
+    <Parameter Name="creer_par" Type="varchar" Mode="In" />
+    <Parameter Name="categorie" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="filefullname" Type="varchar" Mode="In" />
+    <Parameter Name="annee_production" Type="int" Mode="In" />
+    <Parameter Name="date_sortie" Type="datetime" Mode="In" />
+    <Parameter Name="lien" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="insertion_videos_videosseries_animer" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="titre" Type="varchar" Mode="In" />
+    <Parameter Name="acteure" Type="varchar" Mode="In" />
+    <Parameter Name="genre" Type="varchar" Mode="In" />
+    <Parameter Name="pays" Type="varchar" Mode="In" />
+    <Parameter Name="duree" Type="time" Mode="In" />
+    <Parameter Name="creer_par" Type="varchar" Mode="In" />
+    <Parameter Name="categorie" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="filefullname" Type="varchar" Mode="In" />
+    <Parameter Name="nbsaison" Type="int" Mode="In" />
+    <Parameter Name="nbepisode" Type="int" Mode="In" />
+    <Parameter Name="annee_lancement" Type="int" Mode="In" />
+  </Function>
+  <Function Name="insertion_videos_videosseries_series" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="titre" Type="varchar" Mode="In" />
+    <Parameter Name="acteure" Type="varchar" Mode="In" />
+    <Parameter Name="genre" Type="varchar" Mode="In" />
+    <Parameter Name="pays" Type="varchar" Mode="In" />
+    <Parameter Name="duree" Type="time" Mode="In" />
+    <Parameter Name="creer_par" Type="varchar" Mode="In" />
+    <Parameter Name="categorie" Type="varchar" Mode="In" />
+    <Parameter Name="description" Type="varchar(max)" Mode="In" />
+    <Parameter Name="filefullname" Type="varchar" Mode="In" />
+    <Parameter Name="nbsaison" Type="int" Mode="In" />
+    <Parameter Name="nbepisode" Type="int" Mode="In" />
+    <Parameter Name="annee_lancement" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="Gestion_video_skstreamStoreContainer">
+    <EntitySet Name="Sommaire_seriesSet" EntityType="Self.Sommaire_seriesSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sommaire_seriesSet_Detail_animer" EntityType="Self.Sommaire_seriesSet_Detail_animer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Sommaire_seriesSet_Detail_series" EntityType="Self.Sommaire_seriesSet_Detail_series" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideosSet" EntityType="Self.VideosSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideosSet_Animer" EntityType="Self.VideosSet_Animer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideosSet_Films" EntityType="Self.VideosSet_Films" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideosSet_Series" EntityType="Self.VideosSet_Series" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VideosSet_Video_serie" EntityType="Self.VideosSet_Video_serie" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Animer_inherits_Video_serie" Association="Self.FK_Animer_inherits_Video_serie">
+      <End Role="VideosSet_Video_serie" EntitySet="VideosSet_Video_serie" />
+      <End Role="VideosSet_Animer" EntitySet="VideosSet_Animer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AnimerDetail_animer" Association="Self.FK_AnimerDetail_animer">
+      <End Role="VideosSet_Animer" EntitySet="VideosSet_Animer" />
+      <End Role="Sommaire_seriesSet_Detail_animer" EntitySet="Sommaire_seriesSet_Detail_animer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detail_animer_inherits_Sommaire_series" Association="Self.FK_Detail_animer_inherits_Sommaire_series">
+      <End Role="Sommaire_seriesSet" EntitySet="Sommaire_seriesSet" />
+      <End Role="Sommaire_seriesSet_Detail_animer" EntitySet="Sommaire_seriesSet_Detail_animer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Detail_series_inherits_Sommaire_series" Association="Self.FK_Detail_series_inherits_Sommaire_series">
+      <End Role="Sommaire_seriesSet" EntitySet="Sommaire_seriesSet" />
+      <End Role="Sommaire_seriesSet_Detail_series" EntitySet="Sommaire_seriesSet_Detail_series" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Films_inherits_Videos" Association="Self.FK_Films_inherits_Videos">
+      <End Role="VideosSet" EntitySet="VideosSet" />
+      <End Role="VideosSet_Films" EntitySet="VideosSet_Films" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Series_Detailseries" Association="Self.FK_Series_Detailseries">
+      <End Role="VideosSet_Series" EntitySet="VideosSet_Series" />
+      <End Role="Sommaire_seriesSet_Detail_series" EntitySet="Sommaire_seriesSet_Detail_series" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Series_inherits_Video_serie" Association="Self.FK_Series_inherits_Video_serie">
+      <End Role="VideosSet_Video_serie" EntitySet="VideosSet_Video_serie" />
+      <End Role="VideosSet_Series" EntitySet="VideosSet_Series" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Video_serie_inherits_Videos" Association="Self.FK_Video_serie_inherits_Videos">
+      <End Role="VideosSet" EntitySet="VideosSet" />
+      <End Role="VideosSet_Video_serie" EntitySet="VideosSet_Video_serie" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
