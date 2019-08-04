@@ -71,7 +71,7 @@
   </PropertyGroup>
   <PropertyGroup />
   <PropertyGroup>
-    <ApplicationIcon>Livre.ico</ApplicationIcon>
+    <ApplicationIcon>Resources\Livre.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <TargetZone>LocalIntranet</TargetZone>
@@ -162,42 +162,37 @@
     <Compile Include="Animer.cs">
       <DependentUpon>Gestion_video_skstream.tt</DependentUpon>
     </Compile>
-    <Compile Include="Animer_ajoutfonctionnaliter.cs" />
+    <Compile Include="Classes_metier\Animer_ajoutfonctionnaliter.cs" />
+    <Compile Include="Classes_metier\Gestion_video_skstreamContainer_ajoutfonctionnaliter.cs" />
     <Compile Include="Detail_animer.cs">
       <DependentUpon>Gestion_video_skstream.tt</DependentUpon>
     </Compile>
-    <Compile Include="Detail_animer_ajoutfonctionnaliter.cs" />
+    <Compile Include="Classes_metier\Detail_animer_ajoutfonctionnaliter.cs" />
     <Compile Include="Detail_series.cs">
       <DependentUpon>Gestion_video_skstream.tt</DependentUpon>
     </Compile>
-    <Compile Include="Detail_series_ajoutfonctionnaliter.cs" />
-    <Compile Include="Fenetre_fiche_video.cs">
+    <Compile Include="Classes_metier\Detail_series_ajoutfonctionnaliter.cs" />
+    <Compile Include="Views\Fenetre_principale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Fenetre_fiche_video.Designer.cs">
-      <DependentUpon>Fenetre_fiche_video.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Fenetre_principale.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Fenetre_principale.Designer.cs">
+    <Compile Include="Views\Fenetre_principale.Designer.cs">
       <DependentUpon>Fenetre_principale.cs</DependentUpon>
     </Compile>
-    <Compile Include="FicheTechnique.cs">
+    <Compile Include="Views\FicheTechnique.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FicheTechnique.Designer.cs">
+    <Compile Include="Views\FicheTechnique.Designer.cs">
       <DependentUpon>FicheTechnique.cs</DependentUpon>
     </Compile>
     <Compile Include="Films.cs">
       <DependentUpon>Gestion_video_skstream.tt</DependentUpon>
     </Compile>
-    <Compile Include="Films_ajoutfonctionnaliter.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Classes_metier\Films_ajoutfonctionnaliter.cs" />
+    <Compile Include="Views\Fenetre_enregistrement.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Views\Fenetre_enregistrement.Designer.cs">
+      <DependentUpon>Fenetre_enregistrement.cs</DependentUpon>
     </Compile>
     <Compile Include="Gestion_video_skstream.Context.cs">
       <AutoGen>True</AutoGen>
@@ -214,50 +209,47 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Gestion_video_skstream.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Gestion_video_skstream_ajoutfonctionnaliter.cs" />
-    <Compile Include="INotificationchargemetfrom_database.cs" />
-    <Compile Include="Iservices_database.cs" />
-    <Compile Include="Methodes_utilitaire.cs" />
-    <Compile Include="Minigestionnnaviguationformulaire.cs" />
-    <Compile Include="MonoFlat Theme.cs" />
-    <Compile Include="Notification_changementfrom_database_image.cs" />
-    <Compile Include="Notification_chargementfrom_database_onglet.cs" />
+    <Compile Include="Database_contenaire\Gestion_video_skstream_ajoutfonctionnaliter.cs" />
+    <Compile Include="Services\Interfaces\INotificationchargemetfrom_database.cs" />
+    <Compile Include="Services\Interfaces\Iservices_database.cs" />
+    <Compile Include="Helpers\Methodes_utilitaire.cs" />
+    <Compile Include="Helpers\Minigestionnnaviguationformulaire.cs" />
+    <Compile Include="Classe_graphique_personnaliser\MonoFlat Theme.cs" />
+    <Compile Include="Services\Classes\Notification_changementfrom_database_image.cs" />
+    <Compile Include="Services\Classes\Notification_chargementfrom_database_onglet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Series.cs">
       <DependentUpon>Gestion_video_skstream.tt</DependentUpon>
     </Compile>
-    <Compile Include="Series_ajoutfonctionnaliter.cs" />
-    <Compile Include="Service_animer.cs" />
-    <Compile Include="Service_Detailanimer.cs" />
-    <Compile Include="Service_Detailserie.cs" />
-    <Compile Include="Service_Film.cs" />
-    <Compile Include="Service_serie.cs" />
-    <Compile Include="Service_Video.cs" />
-    <Compile Include="Service_Video_serie.cs" />
+    <Compile Include="Classes_metier\Series_ajoutfonctionnaliter.cs" />
+    <Compile Include="Services\Classes\Service_animer.cs" />
+    <Compile Include="Services\Classes\Service_Detailanimer.cs" />
+    <Compile Include="Services\Classes\Service_Detailserie.cs" />
+    <Compile Include="Services\Classes\Service_Film.cs" />
+    <Compile Include="Services\Classes\Service_serie.cs" />
+    <Compile Include="Services\Classes\Service_Video.cs" />
+    <Compile Include="Services\Classes\Service_Video_serie.cs" />
     <Compile Include="Sommaire_series.cs">
       <DependentUpon>Gestion_video_skstream.tt</DependentUpon>
     </Compile>
-    <Compile Include="Sommaire_seriess_ajoutfonctionnaliter.cs" />
+    <Compile Include="Classes_metier\Sommaire_seriess_ajoutfonctionnaliter.cs" />
     <Compile Include="Videos.cs">
       <DependentUpon>Gestion_video_skstream.tt</DependentUpon>
     </Compile>
-    <Compile Include="Videos_ajoutfonctionnaliter.cs" />
+    <Compile Include="Classes_metier\Videos_ajoutfonctionnaliter.cs" />
     <Compile Include="Video_serie.cs">
       <DependentUpon>Gestion_video_skstream.tt</DependentUpon>
     </Compile>
-    <Compile Include="Video_serie_ajoutfonctionnaliter.cs" />
-    <EmbeddedResource Include="Fenetre_fiche_video.resx">
-      <DependentUpon>Fenetre_fiche_video.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Fenetre_principale.resx">
+    <Compile Include="Classes_metier\Video_serie_ajoutfonctionnaliter.cs" />
+    <EmbeddedResource Include="Views\Fenetre_principale.resx">
       <DependentUpon>Fenetre_principale.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FicheTechnique.resx">
+    <EmbeddedResource Include="Views\FicheTechnique.resx">
       <DependentUpon>FicheTechnique.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="Views\Fenetre_enregistrement.resx">
+      <DependentUpon>Fenetre_enregistrement.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -298,7 +290,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Livre.ico" />
+    <Content Include="Resources\Livre.ico" />
     <None Include="bin\Debug\Images error\img_sortie_application.jpg" />
     <Content Include="Gestion_video_skstream.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -333,6 +325,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

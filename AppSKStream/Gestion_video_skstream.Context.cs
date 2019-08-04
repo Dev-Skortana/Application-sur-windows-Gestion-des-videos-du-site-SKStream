@@ -14,19 +14,20 @@ namespace AppSKStream
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
-    
+    using AppSKStream.Classes_metier;
+
     public partial class Gestion_video_skstreamContainer : DbContext
     {
         public Gestion_video_skstreamContainer()
             : base("name=Gestion_video_skstreamContainer")
         {
         }
-    
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
         public virtual DbSet<Videos> VideosSet { get; set; }
         public virtual DbSet<Sommaire_series> Sommaire_seriesSet { get; set; }
     

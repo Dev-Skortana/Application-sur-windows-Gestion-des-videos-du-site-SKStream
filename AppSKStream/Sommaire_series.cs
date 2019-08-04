@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppSKStream
+namespace AppSKStream.Classes_metier
 {
     using System;
     using System.Collections.Generic;
