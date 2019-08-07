@@ -1,21 +1,17 @@
 ﻿using System;
 using System.Net;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading;
 using MonoFlat;
 using System.Data.Entity.Core;
 using AppSKStream.Helpers;
 using AppSKStream.Classes_metier;
-using AppSKStream.Views;
 
 namespace AppSKStream.Views
 {
@@ -118,7 +114,7 @@ namespace AppSKStream.Views
                     dictionnaire_regex.Add("pays", Regex.Match(fichiercode_listevideos, "<strong>Nationalité.+</strong>\n*(<a.+>.+</a>(, )*)+</p>"));
                     dictionnaire_regex.Add("duree", Regex.Match(Methodes_utilitaire.rectification_resultat(fichiercode_listevideos, new String[] { "\r", "\n" }, new String[] { "", "" }), "<strong>Durée.+</strong>([0-9a-z ]+)</p>"));
                     dictionnaire_regex.Add("creerpar", Regex.Match(fichiercode_listevideos, "<strong>(Réalisateur|Créateur).+</strong>\n*(<a.+>.+</a>(, )*)+</p>"));
- /* Revoir regex */dictionnaire_regex.Add("description", Regex.Match(fichiercode_listevideos.Replace("\r", "").Replace("\n", ""), "<div class=\"more-info\"><h3>.+</h3><p>(<strong>.+</strong>)*([^<]+)</p>"));
+ /* Revoir regex */dictionnaire_regex.Add("description", Regex.Match(fichiercode_listevideos.Replace("\r", "").Replace("\n", ""), "<div class=\"more-info\"><h3>.+</h3><p>(<strong>.+</strong>)*([^<]{1})</p>"));
                                        dictionnaire_regex.Add("url_image", Regex.Match(fichiercode_listevideos, "<div class=\"movie-info\">\n*<div class=\"thumb\">\n*<img src=\"([^\"]+)\".+>", RegexOptions.IgnoreCase));
                     if (section == "series" || section == "mangas")
                     {
@@ -227,6 +223,7 @@ namespace AppSKStream.Views
             {
                 page_actuelle++;
                 Task.Run(()=>lancement_chargement());
+                return;
             }
         }
 

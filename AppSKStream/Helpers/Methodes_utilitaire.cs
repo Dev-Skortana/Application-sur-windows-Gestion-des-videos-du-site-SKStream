@@ -1,16 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-using System.Windows.Forms;
 
 namespace AppSKStream.Helpers
 {
     public static class Methodes_utilitaire
     {
-        public const String nom_domaine = @"https://www.skstream.bz/";
+        public const String nom_domaine = @"https://skstream.link/";
         public static String return_datesortie_formater_tostring(String donnees) {
             DateTime date_resultat;
             String resultat = DateTime.TryParse(donnees,out date_resultat)==false || Regex.Match(donnees, "^0{2,3}[0-9]+").Success ? "9000/01/01" :donnees;
@@ -67,33 +62,6 @@ namespace AppSKStream.Helpers
             }
             return resultat;
         }
-
-        //public static async Task<Boolean> modification(String nomtable_cleprimaire, String nomtable_cleetrangere,String nomchamprelation,String secondenomtable_cleetrangere, String[] champ_modification, String[] valeure_modification, String[] champ_critere, String[] valeure_critere, String operateure = "=")
-        //{
-        //    Gestion_video_skstreamContainer basedonnees = new Gestion_video_skstreamContainer();
-        //    String requete = "update " + nomtable_cleetrangere + " inner join " + nomtable_cleprimaire + " on " + nomtable_cleprimaire + "." + nomchamprelation + "=" + nomtable_cleetrangere + "." + nomchamprelation + " " + secondenomtable_cleetrangere!=null ? "inner join " + secondenomtable_cleetrangere + " on " + nomtable_cleprimaire + "." + nomchamprelation + "=" + secondenomtable_cleetrangere + "." + nomchamprelation + " ": "";
-        //    for (var i = 0; i < champ_modification.Length; i++)
-        //    {
-        //        if (i != 0)
-        //        {
-        //            requete += ", ";
-        //        }
-        //        requete += "set" + champ_modification[i] + "=" + champ_modification[i]=="annee_production" || champ_modification[i]=="saison" || champ_modification[i] == "episode" || champ_modification[i] == "annee_lancement" || champ_modification[i] == "nbsaison" || champ_modification[i] == "nbepisode" ? valeure_modification[i] + " " : "'" + valeure_modification[i] + "' ";
-        //    }
-        //    requete += creationclause_conditionrequete(champ_critere, valeure_critere, operateure);
-        //    int nombre= basedonnees.Database.ExecuteSqlCommand(requete);
-        //    return nombre != 0 ? true : false;
-        //}
-
-        //public static async Task<Boolean> suppression(String nomtable_cleprimaire, String nomtable_cleetrangere,String  nomchamprelation,String secondenomtable_cleetrangere, String[] champs_criteres, String[] valeures_criteres, String operateure = "=")
-        //{
-        //    Gestion_video_skstreamContainer basedonnees = new Gestion_video_skstreamContainer();
-        //    String requete = "delete from " + nomtable_cleetrangere + " inner join " + nomtable_cleprimaire + " on " + nomtable_cleprimaire + "." + nomchamprelation + "=" + nomtable_cleetrangere + "." + nomchamprelation + " " + secondenomtable_cleetrangere != null ? "inner join " + secondenomtable_cleetrangere + " on " + nomtable_cleprimaire + "." + nomchamprelation + "=" + secondenomtable_cleetrangere + "." + nomchamprelation + " " : "";
-        //    requete += creationclause_conditionrequete(champs_criteres, valeures_criteres, operateure);
-        //    int nombre=basedonnees.Database.ExecuteSqlCommand(requete);
-        //    return nombre != 0 ? true : false;
-        //}
-
     }
 
 }

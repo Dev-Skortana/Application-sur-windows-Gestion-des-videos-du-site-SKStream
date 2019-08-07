@@ -63,10 +63,6 @@ C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStr
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\bin\Release\EntityFramework.xml
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\bin\Release\EntityFramework.SqlServer.xml
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\bin\Release\fr\EntityFramework.resources.dll
-C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.Fenetre_fiche_video.resources
-C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.Fenetre_principale.resources
-C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.FicheTechnique.resources
-C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.Acceuille.resources
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.Properties.Resources.resources
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.csproj.GenerateResource.Cache
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.TrustInfo.xml
@@ -74,3 +70,9 @@ C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStr
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.application
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.exe
 C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.pdb
+C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.csprojAssemblyReference.cache
+C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.Views.Fenetre_principale.resources
+C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.Views.FicheTechnique.resources
+C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.Views.Acceuille.resources
+C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.csproj.CoreCompileInputs.cache
+C:\Users\spart\OneDrive\Bureau\Sauvegardes projets visual studio divers\AppSKStream\AppSKStream\obj\Release\AppSKStream.csproj.CopyComplete

@@ -1,18 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.Entity;
 using System.Diagnostics;
-using System.IO.Pipes;
-using System.Text.RegularExpressions;
-using System.Threading;
-using Microsoft.VisualBasic.CompilerServices;
 using AppSKStream.Services.Interfaces;
 using AppSKStream.Services.Classes;
 using MonoFlat;
@@ -27,9 +19,6 @@ namespace AppSKStream.Views
         private String categorievideo,type_recherche;
         private const String BOUTON_TEXT_RECHERCHEMULTIPLE = "Afficher les enregistrements de l'onglet ",FORMAT_DUREE=@"HH:mm:ss", FORMAT_DATE= @"dd/MM/yyyy",RECHERCHE_SIMPLE= "recherche simple", RECHERCHE_MULTIPLE= "recherche multiple";
         public delegate Task methodetask();
-        public delegate void delegate_update_datagrid();
-
-        public delegate_update_datagrid update_datagrid;
 
         public Fenetre_principale()
         {
@@ -77,9 +66,7 @@ namespace AppSKStream.Views
         {
             if (nom_table.ToUpper() == "videos".ToUpper())
             {
-                var test= (from item in await new Videos(new Service_Video()).liste_videos_selon_criteres(dictionaire_critere, nom_operateure) orderby item.Titre ascending select new { Titre = Methodes_utilitaire.affectation_donneesformater(item.Titre), Acteure = Methodes_utilitaire.affectation_donneesformater(item.Acteure), Genre = Methodes_utilitaire.affectation_donneesformater(item.Genre), Pays = Methodes_utilitaire.affectation_donneesformater(item.Pays), Duree_Vidéos = Methodes_utilitaire.affectation_donneesformater(item.Duree), Realisateures = Methodes_utilitaire.affectation_donneesformater(item.Creer_par), Categorie = Methodes_utilitaire.affectation_donneesformater(item.Categorie) }).ToList();
-                update_datagrid =() => dg_consultation_videos.DataSource = test.Select(item=>item).ToList();
-                Invoke(update_datagrid);
+                dg_consultation_videos.DataSource = (from item in await new Videos(new Service_Video()).liste_videos_selon_criteres(dictionaire_critere, nom_operateure) orderby item.Titre ascending select new { Titre = Methodes_utilitaire.affectation_donneesformater(item.Titre), Acteure = Methodes_utilitaire.affectation_donneesformater(item.Acteure), Genre = Methodes_utilitaire.affectation_donneesformater(item.Genre), Pays = Methodes_utilitaire.affectation_donneesformater(item.Pays), Duree_Vidéos = Methodes_utilitaire.affectation_donneesformater(item.Duree), Realisateures = Methodes_utilitaire.affectation_donneesformater(item.Creer_par), Categorie = Methodes_utilitaire.affectation_donneesformater(item.Categorie) }).ToList();           
                 get_count_allrows_ofdatagrid(dg_consultation_videos);
             }
             else if (nom_table.ToUpper() == "videosseries".ToUpper())

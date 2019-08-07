@@ -2,17 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
-using AppSKStream.Helpers;
-using AppSKStream;
 
 namespace AppSKStream.Classes_metier
 {
     partial class Animer
     {
         private readonly Iservices_database<Animer> data_service_animer;
-        private const String requetesql_animer = "Select VideosSet_Animer.titre,acteure,genre,pays,duree,creer_par,categorie,description_film as description,filefullname,nbsaison,nbepisode,annee_lancement from VideosSet_Animer inner join VideosSet_Video_serie on VideosSet_Video_serie.titre=VideosSet_Animer.titre inner join VideosSet on VideosSet_Animer.titre=VideosSet.titre ";
         public Animer(Iservices_database<Animer> data_service)
         {
             this.data_service_animer = data_service;
@@ -29,24 +25,6 @@ namespace AppSKStream.Classes_metier
         public override string ToString()
         {
             String resultat = base.ToString() + recuperationliste_detailanimer(this.Detail_animer.ToList());
-            return resultat;
-        }
-
-
-        /*A voir */
-        public async Task<Animer> animer_selon_criteres(String[] champs_criteres, String[] valeures_criteres, String operateure = "=")
-        {
-            Gestion_video_skstreamContainer basedonnees = new Gestion_video_skstreamContainer();
-            String requete = requetesql_animer + Methodes_utilitaire.creationclause_conditionrequete(champs_criteres, valeures_criteres, operateure);
-            Animer resultat =await basedonnees.animer.SqlQuery(requete).SingleAsync();
-            return resultat;
-        }
-
-        public async Task<List<Animer>> liste_animer_selon_criteres(String[] champs_criteres, String[] valeures_criteres, String operateure = "=")
-        {
-            Gestion_video_skstreamContainer basedonnees = new Gestion_video_skstreamContainer();
-            String requete = requetesql_animer + Methodes_utilitaire.creationclause_conditionrequete(champs_criteres, valeures_criteres, operateure);
-            List<Animer> resultat =await basedonnees.animer.SqlQuery(requete).ToListAsync();
             return resultat;
         }
 

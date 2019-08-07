@@ -1,7 +1,5 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
@@ -13,7 +11,6 @@ namespace AppSKStream.Classes_metier
     partial class Videos
     {
         private readonly Iservices_database<Videos> data_service_video;
-        private const String requetesql_video = "select titre,acteure,genre,pays,duree,creer_par,categorie,description_film as description,filefullname from VideosSet ";
         public Videos() {
 
         }
@@ -50,22 +47,6 @@ namespace AppSKStream.Classes_metier
         public override string ToString()
         {
             return String.Format("Cette video a pour titre {0} elle dure {1} elle a comme acteure {2} elle a été produite par {3} ses pays de production sont {4} elle entre dans ces genres {5} cette fait partie de la catégorie {6} et enfin son synopsi {7} ",Methodes_utilitaire.affectation_donneesformater(this.Titre),Methodes_utilitaire.affectation_donneesformater(this.Duree),Methodes_utilitaire.affectation_donneesformater(this.Acteure),Methodes_utilitaire.affectation_donneesformater(this.Creer_par),Methodes_utilitaire.affectation_donneesformater(this.Pays),Methodes_utilitaire.affectation_donneesformater(this.Genre),Methodes_utilitaire.affectation_donneesformater(this.Categorie),Methodes_utilitaire.affectation_donneesformater(this.Description));
-        }
-
-        public async Task<Videos> video_selon_criteres(String[] champs_criteres, String[] valeures_criteres, String operateure = "=")
-        {
-            Gestion_video_skstreamContainer basedonnees = new Gestion_video_skstreamContainer();
-            String requete = requetesql_video + Methodes_utilitaire.creationclause_conditionrequete(champs_criteres, valeures_criteres, operateure);
-            Videos resultat = await basedonnees.VideosSet.SqlQuery(requete).SingleAsync();
-            return resultat;
-        }
-
-        public async Task<List<Videos>> liste_videos_selon_criteres(String[] champs_criteres, String[] valeures_criteres, String operateure = "=")
-        {
-            Gestion_video_skstreamContainer basedonnees = new Gestion_video_skstreamContainer();
-            String requete = requetesql_video + Methodes_utilitaire.creationclause_conditionrequete(champs_criteres, valeures_criteres, operateure);
-            List<Videos> resultat = await basedonnees.VideosSet.SqlQuery(requete).ToListAsync();
-            return resultat;
         }
 
         public async Task<Videos> video_selon_criteres(Dictionary<String,String> dictionnaire_critere, String operateure = "=")
